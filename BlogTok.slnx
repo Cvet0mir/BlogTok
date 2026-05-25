@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BlogTok.Controllers/BlogTok.Controllers.csproj" />
+  <Project Path="BlogTok.Data/BlogTok.Data.csproj" />
+  <Project Path="BlogTok.Services/BlogTok.Services.csproj" />
+  <Project Path="BlogTok.Tests/BlogTok.Tests.csproj" />
+</Solution>
