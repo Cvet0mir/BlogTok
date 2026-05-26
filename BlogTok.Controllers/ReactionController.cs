@@ -8,9 +8,9 @@ namespace BlogTok.Controllers
     {
         private readonly ReactionService _service;
 
-        public ReactionController(ReactionService service)
+        public ReactionController()
         {
-            _service = service;
+            _service = new();
         }
 
         public async Task<string> ReactToPostAsync(int userId, int postId, ReactionType type)

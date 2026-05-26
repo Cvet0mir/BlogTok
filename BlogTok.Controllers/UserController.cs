@@ -8,12 +8,12 @@ namespace BlogTok.Controllers
     {
         private readonly UserService _service;
 
-        public UserController(UserService service)
+        public UserController()
         {
-            _service = service;
+            _service = new();
         }
 
-        public async Task<string> RegisterAsync(string email, string password, string firstName, string surname, DateTime birthDate)
+        public async Task<string> RegisterAsync(string email, string password, string firstName, string surname, DateTime birthDate, string imgPath)
         {
             if (string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(password) ||
@@ -33,7 +33,8 @@ namespace BlogTok.Controllers
                 FirstName = firstName,
                 Surname = surname,
                 BirthDate = birthDate,
-                Role = RoleType.User
+                Role = RoleType.User,
+                ProfilePic = imgPath
             };
 
             await _service.AddAsync(user);

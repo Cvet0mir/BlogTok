@@ -9,10 +9,10 @@ namespace BlogTok.Controllers
         private readonly PostService _postService;
         private readonly UserService _userService;
 
-        public PostController(PostService postService, UserService userService)
+        public PostController()
         {
-            _postService = postService;
-            _userService = userService;
+            _postService = new();
+            _userService = new();
         }
 
         public async Task<string> CreatePostAsync(
