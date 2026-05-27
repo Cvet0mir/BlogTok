@@ -1,4 +1,5 @@
-﻿using BlogTok.Data.Enums;
+﻿using BlogTok.Data;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Services;
 
@@ -11,6 +12,10 @@ namespace BlogTok.Controllers
         public UserController()
         {
             _service = new();
+        }
+        public UserController(BlogTokDbContext context)
+        {
+            _service = new(context);
         }
 
         public async Task<string> RegisterAsync(string email, string password, string firstName, string surname, DateTime birthDate, string imgPath)

@@ -12,6 +12,10 @@ namespace BlogTok.Services
         {
             _context = new();
         }
+        public ReactionService(BlogTokDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Reaction?> GetPostReactionAsync(int userId, int postId)
         {

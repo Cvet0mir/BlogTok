@@ -13,6 +13,10 @@ namespace BlogTok.Services
         {
             _context = new();
         }
+        public UserService(BlogTokDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task AddAsync(User user)
         {

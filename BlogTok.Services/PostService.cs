@@ -12,6 +12,10 @@ namespace BlogTok.Services
         {
             _context = new();
         }
+        public PostService(BlogTokDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task AddAsync(Post post)
         {

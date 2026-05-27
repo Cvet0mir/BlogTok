@@ -1,4 +1,5 @@
-﻿using BlogTok.Data.Enums;
+﻿using BlogTok.Data;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Services;
 
@@ -14,7 +15,11 @@ namespace BlogTok.Controllers
             _service = new();
             _userService = new();
         }
-
+        public CommentController(BlogTokDbContext context)
+        {
+            _service = new(context);
+            _userService = new(context);
+        }
         public async Task<string> CreateCommentAsync(int userId, int postId, string content)
         {
             if (string.IsNullOrWhiteSpace(content))

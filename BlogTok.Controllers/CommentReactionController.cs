@@ -1,4 +1,5 @@
-﻿using BlogTok.Data.Enums;
+﻿using BlogTok.Data;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Services;
 
@@ -11,6 +12,10 @@ namespace BlogTok.Controllers
         public CommentReactionController()
         {
             _service = new();
+        }
+        public CommentReactionController(BlogTokDbContext context)
+        {
+            _service = new(context);
         }
 
         public async Task<string> ReactToCommentAsync(int userId, int commentId, ReactionType type)

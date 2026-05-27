@@ -1,4 +1,5 @@
-﻿using BlogTok.Data.Enums;
+﻿using BlogTok.Data;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Services;
 
@@ -13,6 +14,11 @@ namespace BlogTok.Controllers
         {
             _postService = new();
             _userService = new();
+        }
+        public PostController(BlogTokDbContext context)
+        {
+            _userService = new(context);
+            _postService = new(context);
         }
 
         public async Task<string> CreatePostAsync(
