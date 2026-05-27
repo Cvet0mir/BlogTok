@@ -1,6 +1,6 @@
 namespace BlogTok.Tests
 {
-    public class UserControllerTests
+    public class sth
     {
         [SetUp]
         public void Setup()

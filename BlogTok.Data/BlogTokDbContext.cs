@@ -6,6 +6,14 @@ namespace BlogTok.Data
 {
     public class BlogTokDbContext : DbContext
     {
+        public BlogTokDbContext(DbContextOptions<BlogTokDbContext> options)
+            : base(options)
+        {
+        }
+        public BlogTokDbContext()
+        {
+        }
+
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Post> Posts { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; } = null!;
