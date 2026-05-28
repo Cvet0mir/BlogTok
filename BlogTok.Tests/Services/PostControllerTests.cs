@@ -16,7 +16,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        User user = new User
+        User user = new()
         {
             Email = "test@test.com",
             HashedPassword = "password",
@@ -70,7 +70,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        User user = new User
+        User user = new()
         {
             Email = "test@test.com",
             HashedPassword = "password",
@@ -82,7 +82,7 @@ public class PostControllerTests
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        Post post = new Post
+        Post post = new()
         {
             UserId = user.Id,
             Title = "Test Post",
@@ -116,7 +116,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        User user1 = new User
+        User user1 = new()
         {
             Email = "user1@test.com",
             HashedPassword = "password",
@@ -125,7 +125,7 @@ public class PostControllerTests
             BirthDate = new DateTime(1990, 1, 1)
         };
 
-        User user2 = new User
+        User user2 = new()
         {
             Email = "user2@test.com",
             HashedPassword = "password",
@@ -138,7 +138,7 @@ public class PostControllerTests
         context.Users.Add(user2);
         await context.SaveChangesAsync();
 
-        Post post = new Post
+        Post post = new()
         {
             UserId = user1.Id,
             Title = "User1 Post",
@@ -161,7 +161,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        User user = new User
+        User user = new()
         {
             Email = "test@test.com",
             HashedPassword = "password",
@@ -172,14 +172,14 @@ public class PostControllerTests
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        Post post1 = new Post
+        Post post1 = new()
         {
             UserId = user.Id,
             Title = "Post 1",
             CreatedAt = DateTime.Now
         };
 
-        Post post2 = new Post
+        Post post2 = new()
         {
             UserId = user.Id,
             Title = "Post 2",
@@ -203,7 +203,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        User user1 = new User
+        User user1 = new()
         {
             Email = "user1@test.com",
             HashedPassword = "password",
@@ -212,7 +212,7 @@ public class PostControllerTests
             BirthDate = new DateTime(1990, 1, 1)
         };
 
-        User user2 = new User
+        User user2 = new()
         {
             Email = "user2@test.com",
             HashedPassword = "password",
@@ -259,7 +259,7 @@ public class PostControllerTests
     {
         var context = TestDBFactory.CreateDbContext();
 
-        Post post = new Post
+        Post post = new()
         {
             UserId = 1,
             Title = "Test Post",
