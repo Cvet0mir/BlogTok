@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogTok.Controllers\BlogTok.Controllers.csproj" />
+    <ProjectReference Include="..\BlogTok.Data\BlogTok.Data.csproj" />
+    <ProjectReference Include="..\BlogTok.Session\BlogTok.Session.csproj" />
+  </ItemGroup>
+
 </Project>
