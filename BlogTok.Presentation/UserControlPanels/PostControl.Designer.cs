@@ -33,6 +33,7 @@ namespace BlogTok.Presentation.UserControlPanels
         /// </summary>
         private void InitializeComponent()
         {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(PostControl));
             pictureBox1 = new PictureBox();
             label3 = new Label();
             richTextBox1 = new RichTextBox();
@@ -41,7 +42,7 @@ namespace BlogTok.Presentation.UserControlPanels
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.PostDefault;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(165, 166);

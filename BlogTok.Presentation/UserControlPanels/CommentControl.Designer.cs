@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommentControl));
             pictureBox1 = new PictureBox();
             label6 = new Label();
             richTextBox1 = new RichTextBox();
@@ -40,7 +41,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.ProfileDefault;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(51, 46);
