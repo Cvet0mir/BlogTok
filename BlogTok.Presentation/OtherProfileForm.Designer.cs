@@ -52,6 +52,7 @@
             button6.TabIndex = 38;
             button6.Text = "Search Users";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button4
             // 
@@ -76,6 +77,7 @@
             button3.TabIndex = 36;
             button3.Text = "'s Posts";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 

@@ -16,5 +16,18 @@ namespace BlogTok.Presentation
         {
             InitializeComponent();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SearchUsersForm searchUsersForm = new();
+            searchUsersForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

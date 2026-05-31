@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPost));
             label2 = new Label();
             richTextBox1 = new RichTextBox();
             textBox1 = new TextBox();
@@ -99,7 +100,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.PostDefault;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(648, 96);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
@@ -107,6 +108,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // button3
             // 
@@ -119,6 +121,7 @@
             button3.TabIndex = 19;
             button3.Text = "Post";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // AddPost
             // 

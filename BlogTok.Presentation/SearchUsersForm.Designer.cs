@@ -35,7 +35,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("SimSun", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(21, 179);
+            label2.Location = new Point(22, 120);
             label2.Name = "label2";
             label2.Size = new Size(287, 33);
             label2.TabIndex = 3;

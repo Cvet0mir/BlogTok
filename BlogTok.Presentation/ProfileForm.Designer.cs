@@ -42,6 +42,7 @@
             button7 = new Button();
             button9 = new Button();
             button8 = new Button();
+            button10 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -113,61 +114,63 @@
             // 
             button3.BackColor = Color.Linen;
             button3.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(698, 13);
+            button3.Location = new Point(708, 38);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(146, 48);
             button3.TabIndex = 24;
-            button3.Text = "Your Posts";
+            button3.Text = "All Posts";
             button3.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
             button4.BackColor = Color.Linen;
             button4.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(698, 90);
+            button4.Location = new Point(708, 90);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(146, 48);
             button4.TabIndex = 25;
-            button4.Text = "Liked Posts";
+            button4.Text = "Your Posts";
             button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
             button5.BackColor = Color.Linen;
             button5.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(698, 238);
+            button5.Location = new Point(708, 194);
             button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
             button5.Size = new Size(146, 48);
             button5.TabIndex = 27;
-            button5.Text = "Commented Posts";
+            button5.Text = "Search Users";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
             button6.BackColor = Color.Linen;
             button6.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(698, 161);
+            button6.Location = new Point(708, 142);
             button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
             button6.Size = new Size(146, 48);
             button6.TabIndex = 26;
-            button6.Text = "Search Users";
+            button6.Text = "Liked Posts";
             button6.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
             button7.BackColor = Color.Red;
             button7.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(698, 317);
+            button7.Location = new Point(708, 298);
             button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
             button7.Size = new Size(146, 48);
             button7.TabIndex = 28;
             button7.Text = "Log Out";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button9
             // 
@@ -185,13 +188,26 @@
             // 
             button8.BackColor = Color.LightSeaGreen;
             button8.Font = new Font("SimSun", 46F);
-            button8.Location = new Point(896, 142);
+            button8.Location = new Point(893, 155);
             button8.Margin = new Padding(3, 2, 3, 2);
             button8.Name = "button8";
             button8.Size = new Size(84, 75);
             button8.TabIndex = 29;
             button8.Text = "+";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
+            // 
+            // button10
+            // 
+            button10.BackColor = Color.Linen;
+            button10.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button10.Location = new Point(708, 246);
+            button10.Margin = new Padding(3, 2, 3, 2);
+            button10.Name = "button10";
+            button10.Size = new Size(146, 48);
+            button10.TabIndex = 31;
+            button10.Text = "Commented Posts";
+            button10.UseVisualStyleBackColor = false;
             // 
             // ProfileForm
             // 
@@ -199,6 +215,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
             ClientSize = new Size(1010, 390);
+            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -234,5 +251,6 @@
         private Button button7;
         private Button button9;
         private Button button8;
+        private Button button10;
     }
 }

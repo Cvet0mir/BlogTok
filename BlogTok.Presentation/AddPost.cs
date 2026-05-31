@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BlogTok.Controllers;
+using BlogTok.Session;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,48 @@ namespace BlogTok.Presentation
 {
     public partial class AddPost : Form
     {
+        PostController _controller;
+
         public AddPost()
         {
             InitializeComponent();
+
+            _controller = new();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new();
+
+            openFileDialog.Title = "Choose a post picture";
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string imagePath = openFileDialog.FileName;
+                pictureBox1.Image = Image.FromFile(imagePath);
+            }
+        }
+
+        private async Task button3_Click(object sender, EventArgs e)
+        {
+            string title = textBox1.Text;
+            string content = richTextBox1.Text;
+            string imgPath = pictureBox1.ImageLocation;
+
+            string result = await _controller.CreatePostAsync(UserSession.CurrentUser.Id, title, content, imgPath);
+
+            if (result == "Post created successfully")
+            {
+                MessageBox.Show("Post created successfully!", "Success");
+                ProfileForm profileForm = new();
+                profileForm.ShowDialog();
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(result, "Error");
+            }
     }
 }
