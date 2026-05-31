@@ -2,6 +2,7 @@
 using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace BlogTok.Services
 {
@@ -98,6 +99,24 @@ namespace BlogTok.Services
             {
                 _context.UserFollows.Remove(follow);
                 await _context.SaveChangesAsync();
+            }
+        }
+        public async Task<bool> ImportUsersFromJsonAsync(string json)
+        {
+            try
+            {
+                var users = JsonSerializer.Deserialize<List<User>>(json);
+
+                if (users == null || users.Count == 0)
+                    return false;
+
+                await _context.Users.AddRangeAsync(users);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (JsonException)
+            {
+                return false;
             }
         }
     }

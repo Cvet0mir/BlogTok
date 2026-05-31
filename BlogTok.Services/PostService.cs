@@ -1,4 +1,5 @@
 ﻿using BlogTok.Data;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,12 +46,26 @@ namespace BlogTok.Services
                 .ToListAsync();
         }
 
-        public async Task<List<Post>> GetFeedAsync(List<int> userIds)
+        public async Task<List<Post>> GetFeedAsync()
         {
             return await _context.Posts
-                .Where(p => userIds.Contains(p.UserId))
                 .OrderByDescending(p => p.CreatedAt)
+                .ToListAsync();
+        }
+        public async Task<List<Post>> GetMostLikedPostsAsync(int count = 20)
+        {
+            return await _context.Posts
+                .Select(p => new
+                {
+                    Post = p,
+                    LikeCount = p.Reactions.Count(r => r.Emotion == ReactionType.Like)
+                })
+                .OrderByDescending(x => x.LikeCount)
+                .ThenByDescending(x => x.Post.CreatedAt)
+                .Take(count)
+                .Select(x => x.Post)
                 .ToListAsync();
         }
     }
 }
+// za proverqvashtiq: hiii 😁
