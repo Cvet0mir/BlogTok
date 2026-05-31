@@ -40,8 +40,8 @@
             button5 = new Button();
             button6 = new Button();
             button7 = new Button();
-            button8 = new Button();
             button9 = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -169,18 +169,6 @@
             button7.Text = "Log Out";
             button7.UseVisualStyleBackColor = false;
             // 
-            // button8
-            // 
-            button8.BackColor = Color.LightSeaGreen;
-            button8.Font = new Font("SimSun", 46F);
-            button8.Location = new Point(896, 142);
-            button8.Margin = new Padding(3, 2, 3, 2);
-            button8.Name = "button8";
-            button8.Size = new Size(84, 75);
-            button8.TabIndex = 29;
-            button8.Text = "+";
-            button8.UseVisualStyleBackColor = false;
-            // 
             // button9
             // 
             button9.BackColor = Color.Linen;
@@ -192,6 +180,18 @@
             button9.TabIndex = 30;
             button9.Text = "Edit profile ✏";
             button9.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.LightSeaGreen;
+            button8.Font = new Font("SimSun", 46F);
+            button8.Location = new Point(896, 142);
+            button8.Margin = new Padding(3, 2, 3, 2);
+            button8.Name = "button8";
+            button8.Size = new Size(84, 75);
+            button8.TabIndex = 29;
+            button8.Text = "+";
+            button8.UseVisualStyleBackColor = false;
             // 
             // ProfileForm
             // 
@@ -232,7 +232,7 @@
         private Button button5;
         private Button button6;
         private Button button7;
-        private Button button8;
         private Button button9;
+        private Button button8;
     }
 }
