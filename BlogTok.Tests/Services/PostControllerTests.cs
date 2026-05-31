@@ -1,4 +1,5 @@
 ﻿using BlogTok.Controllers;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Tests.Helpers;
 
@@ -247,9 +248,9 @@ public class PostControllerTests
         await context.SaveChangesAsync();
 
         PostController controller = new(context);
-        var feed = await controller.GetFeedAsync(user1.Id);
+        var feed = await controller.GetFeedAsync();
 
-        Assert.That(feed.Count, Is.EqualTo(2));
+        Assert.That(feed, Has.Count.EqualTo(2));
         Assert.That(feed.Any(p => p.Title == "My Post"), Is.True);
         Assert.That(feed.Any(p => p.Title == "Followed User Post"), Is.True);
     }
@@ -286,5 +287,81 @@ public class PostControllerTests
         PostController controller = new(context);
         var result = await controller.GetPostAsync(999);
         Assert.IsNull(result);
+    }
+
+    [Test]
+    public async Task Get_Most_Liked_Posts_1()
+    {
+        var context = TestDBFactory.CreateDbContext();
+
+        User user = new()
+        {
+            Email = "test@test.com",
+            HashedPassword = "password",
+            FirstName = "Test",
+            Surname = "User",
+            BirthDate = new DateTime(1990, 1, 1)
+        };
+
+        User user2 = new()
+        {
+            Email = "u2@test.com",
+            HashedPassword = "password",
+            FirstName = "U2",
+            Surname = "Test",
+            BirthDate = new DateTime(1990, 1, 1)
+        };
+
+        User user3 = new()
+        {
+            Email = "u3@test.com",
+            HashedPassword = "password",
+            FirstName = "U3",
+            Surname = "Test",
+            BirthDate = new DateTime(1990, 1, 1)
+        };
+        context.Users.AddRange(user, user2, user3);
+        await context.SaveChangesAsync();
+
+        Post post1 = new()
+        {
+            UserId = user.Id,
+            Title = "Most Liked",
+            CreatedAt = DateTime.Now
+        };
+
+        Post post2 = new()
+        {
+            UserId = user.Id,
+            Title = "Less Liked",
+            CreatedAt = DateTime.Now
+        };
+        context.Posts.AddRange(post1, post2);
+        await context.SaveChangesAsync();
+
+        context.Reactions.AddRange(
+            new Reaction { PostId = post1.Id, UserId = user.Id, Emotion = ReactionType.Like },
+            new Reaction { PostId = post1.Id, UserId = user2.Id, Emotion = ReactionType.Like},
+            new Reaction { PostId = post1.Id, UserId = user3.Id, Emotion = ReactionType.Like}
+        );
+        await context.SaveChangesAsync();
+
+        PostController controller = new(context);
+        var result = await controller.GetMostLikedPostsAsync();
+
+        Assert.That(result.Count, Is.EqualTo(2));
+        Assert.That(result[0].Title, Is.EqualTo("Most Liked"));
+        Assert.That(result[1].Title, Is.EqualTo("Less Liked"));
+    }
+    [Test]
+    public async Task Get_Most_Liked_Posts_2()
+    {
+        var context = TestDBFactory.CreateDbContext();
+
+        PostController controller = new(context);
+        var result = await controller.GetMostLikedPostsAsync();
+
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result, Is.Empty);
     }
 }

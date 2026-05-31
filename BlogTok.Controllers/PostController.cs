@@ -64,14 +64,14 @@ namespace BlogTok.Controllers
             return _postService.GetUserPostsAsync(userId);
         }
 
-        public async Task<List<Post>> GetFeedAsync(int userId)
+        public async Task<List<Post>> GetFeedAsync()
         {
-            var following = await _userService.GetFollowingAsync(userId);
-
-            var ids = following.Select(u => u.Id).ToList();
-            ids.Add(userId);
-
-            return await _postService.GetFeedAsync(ids);
+            return await _postService.GetFeedAsync();
+        }
+        
+        public async Task<List<Post>> GetMostLikedPostsAsync()
+        {
+            return await _postService.GetMostLikedPostsAsync();
         }
 
         public Task<Post?> GetPostAsync(int postId)

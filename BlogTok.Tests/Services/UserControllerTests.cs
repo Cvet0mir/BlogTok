@@ -945,4 +945,56 @@ public class UserControllerTests
         var following = await controller.GetFollowingAsync(user1.Id);
         Assert.That(following.Any(u => u.Id == user2.Id), Is.True);
     }
+    [Test]
+    public async Task Import_Users_From_Json_1()
+    {
+        var context = TestDBFactory.CreateDbContext();
+
+        UserController controller = new(context);
+
+        string filePath = Path.GetTempFileName();
+        string json = """
+        [
+            {
+                "Email":"john@test.com",
+                "HashedPassword":"password",
+                "FirstName":"John",
+                "Surname":"Doe",
+                "BirthDate":"1990-01-01"
+            }
+        ]
+        """;
+        await File.WriteAllTextAsync(filePath, json);
+
+        var result = await controller.ImportUsersFromJsonAsync(filePath);
+        Assert.AreEqual("Users imported successfully", result);
+        Assert.That(context.Users.Count(), Is.EqualTo(1));
+
+        File.Delete(filePath);
+    }
+    [Test]
+    public async Task Import_Users_From_Json_2()
+    {
+        var context = TestDBFactory.CreateDbContext();
+
+        UserController controller = new(context);
+        var result = await controller.ImportUsersFromJsonAsync("missing.json");
+
+        Assert.AreEqual("JSON file not found.", result);
+    }
+    [Test]
+    public async Task Import_Users_From_Json_3()
+    {
+        var context = TestDBFactory.CreateDbContext();
+
+        UserController controller = new(context);
+
+        string filePath = Path.GetTempFileName();
+        await File.WriteAllTextAsync(filePath, "{ invalid json }");
+
+        var result = await controller.ImportUsersFromJsonAsync(filePath);
+        Assert.AreEqual("Failed to import users", result);
+
+        File.Delete(filePath);
+    }
 }

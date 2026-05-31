@@ -2,6 +2,8 @@
 using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace BlogTok.Controllers
 {
@@ -132,6 +134,15 @@ namespace BlogTok.Controllers
         public Task<List<User>> GetFollowingAsync(int userId)
         {
             return _service.GetFollowingAsync(userId);
+        }
+        public async Task<string> ImportUsersFromJsonAsync(string filePath)
+        {
+            if (!File.Exists(filePath)) return "JSON file not found.";
+
+            string json = await File.ReadAllTextAsync(filePath);
+            
+            var result = await _service.ImportUsersFromJsonAsync(json);
+            return result ? "Users imported successfully" : "Failed to import users";
         }
     }
 }
