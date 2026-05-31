@@ -41,21 +41,23 @@ namespace BlogTok.Presentation.UserControlPanels
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = Properties.Resources.PostDefault;
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(165, 166);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(174, 14);
+            label3.Font = new Font("SimSun", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(174, 16);
             label3.Name = "label3";
-            label3.Size = new Size(75, 19);
+            label3.Size = new Size(58, 17);
             label3.TabIndex = 3;
-            label3.Text = "Email:";
+            label3.Text = "Title";
             // 
             // richTextBox1
             // 
