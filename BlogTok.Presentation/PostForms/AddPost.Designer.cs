@@ -95,7 +95,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("SimSun", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(848, 93);
+            label4.Location = new Point(839, 95);
             label4.Name = "label4";
             label4.Size = new Size(118, 30);
             label4.TabIndex = 9;
