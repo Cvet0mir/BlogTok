@@ -28,5 +28,26 @@ namespace BlogTok.Presentation
 
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserJsonAddForm userJsonAddForm = new();
+            userJsonAddForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            SearchUsersForm searchUsersForm = new();
+            searchUsersForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

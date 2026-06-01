@@ -22,7 +22,10 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            AdminHomePage adminHome = new();
+            adminHome.ShowDialog();
 
+            this.Close();
         }
 
         private async void button6_Click(object sender, EventArgs e)

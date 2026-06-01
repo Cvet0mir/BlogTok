@@ -43,5 +43,13 @@ namespace BlogTok.Presentation
 
             this.Close();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            EditUserForm editUserPage = new();
+            editUserPage.ShowDialog();
+
+            this.Close();
+        }
     }
 }

@@ -55,6 +55,7 @@
             button10.TabIndex = 32;
             button10.Text = "Search Users";
             button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
             // 
             // button1
             // 
@@ -66,6 +67,7 @@
             button1.TabIndex = 33;
             button1.Text = "Add Users";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -77,6 +79,7 @@
             button2.TabIndex = 34;
             button2.Text = "All Posts";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button7
             // 

@@ -174,6 +174,7 @@
             button9.TabIndex = 30;
             button9.Text = "Edit profile ✏";
             button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
             // 
             // button8
             // 
