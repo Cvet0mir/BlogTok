@@ -12,9 +12,37 @@ namespace BlogTok.Presentation.UserControlPanels
 {
     public partial class PostControl : System.Windows.Forms.UserControl
     {
+        public event EventHandler PostClicked;
+
         public PostControl()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            
+            this.Click += OnControlClicked;
+            pictureBox1.Click += OnControlClicked;
+            label3.Click += OnControlClicked;
+            richTextBox1.Click += OnControlClicked;
+        }
+
+        public void OnControlClicked(object sender, EventArgs e)
+        {
+            PostClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public string ImgPath
+        {
+            get => pictureBox1.ImageLocation;
+            set => pictureBox1.ImageLocation = value;
+        }
+        public string Title
+        {
+            get => label3.Text;
+            set => label3.Text = value;
+        }
+        public string Content
+        {
+            get => richTextBox1.Text;
+            set => richTextBox1.Text = value;
         }
     }
 }

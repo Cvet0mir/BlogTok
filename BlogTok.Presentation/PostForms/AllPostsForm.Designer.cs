@@ -35,6 +35,8 @@
             radioButton3 = new RadioButton();
             radioButton1 = new RadioButton();
             button1 = new Button();
+            label5 = new Label();
+            textBox3 = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,6 +50,7 @@
             button2.TabIndex = 25;
             button2.Text = "Home Page";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -61,7 +64,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("SimSun", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(121, 87);
+            label2.Location = new Point(117, 86);
             label2.Name = "label2";
             label2.Size = new Size(122, 40);
             label2.TabIndex = 22;
@@ -72,14 +75,14 @@
             groupBox1.Controls.Add(radioButton3);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(21, 213);
+            groupBox1.Location = new Point(21, 371);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
             groupBox1.Size = new Size(328, 84);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Filter By";
+            groupBox1.Text = "Sort By";
             // 
             // radioButton3
             // 
@@ -111,12 +114,31 @@
             // 
             button1.BackColor = Color.Linen;
             button1.Font = new Font("SimSun", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(21, 313);
+            button1.Location = new Point(21, 284);
             button1.Name = "button1";
-            button1.Size = new Size(328, 29);
+            button1.Size = new Size(327, 29);
             button1.TabIndex = 27;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("SimSun", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(60, 222);
+            label5.Name = "label5";
+            label5.Size = new Size(262, 23);
+            label5.TabIndex = 29;
+            label5.Text = "Type a user's name...";
+            // 
+            // textBox3
+            // 
+            textBox3.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.Location = new Point(21, 248);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(327, 30);
+            textBox3.TabIndex = 28;
             // 
             // AllPostsForm
             // 
@@ -124,6 +146,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
             ClientSize = new Size(1154, 520);
+            Controls.Add(label5);
+            Controls.Add(textBox3);
             Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(button2);
@@ -131,6 +155,7 @@
             Controls.Add(label2);
             Name = "AllPostsForm";
             Text = "AllPostsForm";
+            Load += AllPostsForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -146,5 +171,7 @@
         private RadioButton radioButton3;
         private RadioButton radioButton1;
         private Button button1;
+        private Label label5;
+        private TextBox textBox3;
     }
 }

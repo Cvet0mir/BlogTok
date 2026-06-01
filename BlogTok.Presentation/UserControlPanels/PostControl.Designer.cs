@@ -43,9 +43,10 @@ namespace BlogTok.Presentation.UserControlPanels
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Location = new Point(3, 4);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(165, 166);
+            pictureBox1.Size = new Size(190, 221);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -54,9 +55,9 @@ namespace BlogTok.Presentation.UserControlPanels
             // 
             label3.AutoSize = true;
             label3.Font = new Font("SimSun", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(174, 16);
+            label3.Location = new Point(199, 21);
             label3.Name = "label3";
-            label3.Size = new Size(58, 17);
+            label3.Size = new Size(70, 22);
             label3.TabIndex = 3;
             label3.Text = "Title";
             // 
@@ -64,21 +65,23 @@ namespace BlogTok.Presentation.UserControlPanels
             // 
             richTextBox1.Enabled = false;
             richTextBox1.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            richTextBox1.Location = new Point(174, 46);
+            richTextBox1.Location = new Point(199, 61);
+            richTextBox1.Margin = new Padding(3, 4, 3, 4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(278, 123);
+            richTextBox1.Size = new Size(317, 163);
             richTextBox1.TabIndex = 4;
             richTextBox1.Text = "";
             // 
             // PostControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(richTextBox1);
             Controls.Add(label3);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PostControl";
-            Size = new Size(455, 172);
+            Size = new Size(520, 229);
             ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

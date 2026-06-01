@@ -35,12 +35,14 @@ namespace BlogTok.Services
             return await _context.Posts
                 .Include(p => p.Comments)
                 .Include(p => p.Reactions)
+                .Include(x => x.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<List<Post>> GetUserPostsAsync(int userId)
         {
             return await _context.Posts
+                .Include(x => x.User)
                 .Where(p => p.UserId == userId)
                 .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync();
@@ -49,12 +51,14 @@ namespace BlogTok.Services
         public async Task<List<Post>> GetFeedAsync()
         {
             return await _context.Posts
+                .Include(x => x.User)
                 .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync();
         }
         public async Task<List<Post>> GetMostLikedPostsAsync(int count = 20)
         {
             return await _context.Posts
+                .Include(x => x.User)
                 .Select(p => new
                 {
                     Post = p,
