@@ -37,7 +37,7 @@ namespace BlogTok.Presentation
             }
         }
 
-        private async Task button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             string title = textBox1.Text;
             string content = richTextBox1.Text;
@@ -57,5 +57,14 @@ namespace BlogTok.Presentation
             {
                 MessageBox.Show(result, "Error");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProfileForm profileForm = new();
+            profileForm.ShowDialog();
+
+            this.Close();
+        }
     }
 }

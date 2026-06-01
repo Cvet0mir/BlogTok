@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace BlogTok.Presentation
 {
-    public partial class SearchUsersForm : Form
+    public partial class EditUserForm : Form
     {
-        public SearchUsersForm()
+        public EditUserForm()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ProfileForm profileForm = new();
-            profileForm.ShowDialog();
-
-            this.Close();
         }
     }
 }

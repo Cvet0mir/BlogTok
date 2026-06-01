@@ -29,5 +29,13 @@ namespace BlogTok.Presentation
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ProfileForm profileForm = new();
+            profileForm.ShowDialog();
+
+            this.Close();
+        }
     }
 }
