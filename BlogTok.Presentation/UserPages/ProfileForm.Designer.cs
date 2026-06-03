@@ -222,6 +222,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProfileForm";
             Text = "ProfileForm";
+            Load += ProfileForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

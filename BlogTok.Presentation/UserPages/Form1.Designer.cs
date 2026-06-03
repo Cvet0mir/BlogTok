@@ -151,6 +151,7 @@
             textBox3.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox3.Location = new Point(355, 231);
             textBox3.Name = "textBox3";
+            textBox3.PasswordChar = '*';
             textBox3.Size = new Size(394, 30);
             textBox3.TabIndex = 10;
             // 

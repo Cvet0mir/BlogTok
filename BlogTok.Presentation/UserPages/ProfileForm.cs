@@ -1,4 +1,5 @@
-﻿using BlogTok.Session;
+﻿using BlogTok.Controllers;
+using BlogTok.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,14 @@ namespace BlogTok.Presentation
     public partial class ProfileForm : Form
     {
         // pls helppppp 😭😭😭
+
+        private UserController _controller;
+
         public ProfileForm()
         {
             InitializeComponent();
+
+            _controller = new();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -51,6 +57,20 @@ namespace BlogTok.Presentation
             editUserPage.ShowDialog();
 
             this.Close();
+        }
+
+        private async void ProfileForm_Load(object sender, EventArgs e)
+        {
+
+            button1.Text = (await _controller
+                .GetFollowersAsync(UserSession.CurrentUser.Id))
+                .Count
+                .ToString();
+            button2.Text = (await _controller
+                .GetFollowersAsync(UserSession.CurrentUser.Id))
+                .Count
+                .ToString();
+            label2.Text = UserSession.CurrentUser.FirstName + " " + UserSession.CurrentUser.Surname;
         }
     }
 }

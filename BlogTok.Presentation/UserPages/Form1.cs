@@ -38,7 +38,7 @@ namespace BlogTok.Presentation
 
                 LogInScreen logInScreen = new();
                 logInScreen.ShowDialog();
-                this.Close();
+                this.Hide();
             }
             else
             {

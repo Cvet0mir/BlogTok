@@ -1,6 +1,8 @@
-﻿using BlogTok.Data.Enums;
+﻿using BlogTok.Controllers;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Presentation.PostForms;
+using BlogTok.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,14 @@ namespace BlogTok.Presentation
 {
     public partial class PostDetailsForm : Form
     {
+        private readonly ReactionController _controller;
         private readonly Post _post;
 
         public PostDetailsForm(Post post)
         {
             InitializeComponent();
 
+            _controller = new();
             _post = post;
             LoadPost();
         }
@@ -49,9 +53,16 @@ namespace BlogTok.Presentation
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
-            _post
+            MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Like), "Reaction to post");
+
+            LoadPost();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
