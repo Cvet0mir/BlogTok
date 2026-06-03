@@ -117,6 +117,7 @@
             button3.TabIndex = 24;
             button3.Text = "All Posts";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button4
             // 

@@ -1,4 +1,5 @@
 ﻿using BlogTok.Controllers;
+using BlogTok.Presentation.PostForms;
 using BlogTok.Session;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,14 @@ namespace BlogTok.Presentation
                 .Count
                 .ToString();
             label2.Text = UserSession.CurrentUser.FirstName + " " + UserSession.CurrentUser.Surname;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AllPostsForm allPostsForm = new();
+            allPostsForm.ShowDialog();
+
+            this.Close();
         }
     }
 }
