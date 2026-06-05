@@ -57,7 +57,10 @@ namespace BlogTok.Presentation
         {
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Like), "Reaction to post");
 
-            LoadPost();
+            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
         }
 
         private void label5_Click(object sender, EventArgs e)

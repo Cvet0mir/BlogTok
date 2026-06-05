@@ -71,6 +71,7 @@ namespace BlogTok.Presentation.PostForms
                 control.Title = post.Title;
                 control.Content = post.Description;
                 control.ImgPath = post.Picture;
+                control.Tag = post;
 
                 control.PostClicked += PostControl_PostClicked;
                 flowLayoutPanel1.Controls.Add(control);
