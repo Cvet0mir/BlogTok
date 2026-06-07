@@ -30,7 +30,6 @@
         {
             label2 = new Label();
             groupBox1 = new GroupBox();
-            radioButton4 = new RadioButton();
             radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
@@ -54,7 +53,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(radioButton3);
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
@@ -65,18 +63,6 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filter";
-            // 
-            // radioButton4
-            // 
-            radioButton4.AutoSize = true;
-            radioButton4.Font = new Font("SimSun", 10F);
-            radioButton4.Location = new Point(109, 49);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(116, 18);
-            radioButton4.TabIndex = 3;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Non-Following";
-            radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
@@ -181,6 +167,7 @@
             Controls.Add(label2);
             Name = "SearchUsersForm";
             Text = "SearchUsersForm";
+            Load += SearchUsersForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -193,7 +180,6 @@
         private GroupBox groupBox1;
         private TextBox textBox3;
         private Label label5;
-        private RadioButton radioButton4;
         private RadioButton radioButton3;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
