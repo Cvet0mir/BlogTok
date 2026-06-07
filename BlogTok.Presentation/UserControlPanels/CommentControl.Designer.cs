@@ -94,6 +94,7 @@
             button1.TabIndex = 25;
             button1.Text = "😭";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button3
             // 
@@ -106,6 +107,7 @@
             button3.TabIndex = 26;
             button3.Text = "😂";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -118,6 +120,7 @@
             button4.TabIndex = 27;
             button4.Text = "👎";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // CommentControl
             // 

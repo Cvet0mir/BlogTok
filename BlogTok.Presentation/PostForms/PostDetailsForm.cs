@@ -2,6 +2,7 @@
 using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Presentation.PostForms;
+using BlogTok.Presentation.UserControlPanels;
 using BlogTok.Session;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace BlogTok.Presentation
     {
         private readonly ReactionController _controller;
         private readonly PostController _postController;
+        private readonly CommentController _commentController;
         private readonly Post _post;
 
         public PostDetailsForm(Post post)
@@ -27,12 +29,13 @@ namespace BlogTok.Presentation
 
             _controller = new();
             _postController = new();
+            _commentController = new();
 
             _post = post;
             LoadPost();
         }
 
-        private void LoadPost()
+        private async void LoadPost()
         {
             label2.Text = _post.Title;
             richTextBox1.Text = _post.Description;
@@ -56,7 +59,12 @@ namespace BlogTok.Presentation
                 button6.Visible = true;
             }
 
-
+            var comments = await _commentController.GetCommentsForPostAsync(_post.Id);
+            foreach (var comment in comments)
+            {
+                CommentControl commentControl = new(comment);
+                flowLayoutPanel1.Controls.Add(commentControl);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

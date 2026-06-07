@@ -38,12 +38,14 @@ namespace BlogTok.Services
         public async Task<Comment?> GetByIdAsync(int id)
         {
             return await _context.Comments
+                .Include(c => c.User)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<List<Comment>> GetByPostIdAsync(int postId)
         {
             return await _context.Comments
+                .Include(c => c.User)
                 .Where(c => c.PostId == postId)
                 .OrderByDescending(c => c.Id)
                 .ToListAsync();
