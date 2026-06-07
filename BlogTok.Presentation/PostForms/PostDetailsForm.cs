@@ -36,7 +36,11 @@ namespace BlogTok.Presentation
         {
             label2.Text = _post.Title;
             richTextBox1.Text = _post.Description;
-            pictureBox1.ImageLocation = _post.Picture;
+
+            if (!string.IsNullOrWhiteSpace(_post.Picture))
+            {
+                pictureBox1.ImageLocation = _post.Picture;
+            }
             label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
             label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
             label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
@@ -63,9 +67,14 @@ namespace BlogTok.Presentation
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Dislike), "Reaction to post");
 
+            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
         }
 
         private async void button5_Click(object sender, EventArgs e)
@@ -121,6 +130,26 @@ namespace BlogTok.Presentation
             otherProfileForm.ShowDialog();
 
             this.Close();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Funny), "Reaction to post");
+
+            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Sad), "Reaction to post");
+
+            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
         }
     }
 }

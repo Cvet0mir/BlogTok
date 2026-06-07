@@ -12,9 +12,13 @@ namespace BlogTok.Presentation.UserControlPanels
 {
     public partial class CommentControl : UserControl
     {
+        private int _clickCount;
+
         public CommentControl()
         {
             InitializeComponent();
+
+            _clickCount = 0;
         }
 
         public string
@@ -26,7 +30,10 @@ namespace BlogTok.Presentation.UserControlPanels
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (_clickCount == 0)
+            {
 
+            }
         }
     }
 }

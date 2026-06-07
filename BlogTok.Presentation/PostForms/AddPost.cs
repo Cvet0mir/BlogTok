@@ -15,12 +15,14 @@ namespace BlogTok.Presentation
     public partial class AddPost : Form
     {
         PostController _controller;
+        private string _imgPath;
 
         public AddPost()
         {
             InitializeComponent();
 
             _controller = new();
+            _imgPath = "";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -65,6 +67,22 @@ namespace BlogTok.Presentation
             profileForm.ShowDialog();
 
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new();
+
+            openFileDialog.Title = "Choose a picture for the post";
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string imagePath = openFileDialog.FileName;
+                _imgPath = imagePath;
+
+                pictureBox1.Image = Image.FromFile(imagePath);
+            }
         }
     }
 }

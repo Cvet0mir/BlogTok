@@ -124,6 +124,7 @@
             button3.TabIndex = 30;
             button3.Text = "😂";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button1
             // 
@@ -136,6 +137,7 @@
             button1.TabIndex = 29;
             button1.Text = "😭";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button5
             // 
