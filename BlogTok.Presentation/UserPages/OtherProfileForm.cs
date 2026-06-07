@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BlogTok.Controllers;
+using BlogTok.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,14 @@ namespace BlogTok.Presentation
 {
     public partial class OtherProfileForm : Form
     {
-        public OtherProfileForm()
+        private readonly UserController _controller;
+        private User _user;
+
+        public OtherProfileForm(User user)
         {
             InitializeComponent();
+
+            _user = user;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -36,6 +43,24 @@ namespace BlogTok.Presentation
             profileForm.ShowDialog();
 
             this.Close();
+        }
+
+        private async void OtherProfileForm_Load(object sender, EventArgs e)
+        {
+            label2.Text = _user.FirstName + " " + _user.Surname;
+            button1.Text = (await _controller.GetFollowersAsync(_user.Id)).Count.ToString();
+            button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+            button3.Text = _user.FirstName + "'s posts";
+
+            if (string.IsNullOrWhiteSpace(_user.ProfilePic))
+            {
+                pictureBox1.ImageLocation = _user.ProfilePic;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

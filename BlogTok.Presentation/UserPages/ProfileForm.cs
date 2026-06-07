@@ -72,6 +72,11 @@ namespace BlogTok.Presentation
                 .Count
                 .ToString();
             label2.Text = UserSession.CurrentUser.FirstName + " " + UserSession.CurrentUser.Surname;
+
+            if (string.IsNullOrWhiteSpace(UserSession.CurrentUser.ProfilePic))
+            {
+                pictureBox1.ImageLocation = UserSession.CurrentUser.ProfilePic;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -80,6 +85,35 @@ namespace BlogTok.Presentation
             allPostsForm.ShowDialog();
 
             this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AllPostsForm allPostsForm = new(1);
+            allPostsForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AllPostsForm allPostsForm = new(2);
+            allPostsForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            AllPostsForm allPostsForm = new(3);
+            allPostsForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

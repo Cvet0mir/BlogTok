@@ -18,12 +18,14 @@ namespace BlogTok.Presentation.PostForms
     public partial class AllPostsForm : Form
     {
         private PostController _controller;
+        private int _choice;
 
-        public AllPostsForm()
+        public AllPostsForm(int choice = 0)
         {
             InitializeComponent();
 
             _controller = new();
+            _choice = choice;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,6 +66,20 @@ namespace BlogTok.Presentation.PostForms
             .Contains(
                 textBox3.Text.ToLower())
             ).ToList();
+
+            if (radioButton6.Checked)
+            {
+                posts = posts.Where(x => x.Comments.Any(c => c.UserId == UserSession.CurrentUser.Id)).ToList();
+            }
+            else if (radioButton7.Checked)
+            {
+                posts = posts.Where(x => x.Reactions.Any(r => r.UserId == UserSession.CurrentUser.Id && r.Emotion == ReactionType.Like)).ToList();
+            }
+            else if (radioButton8.Checked)
+            {
+                posts = posts.Where(x => x.UserId == UserSession.CurrentUser.Id).ToList();
+            }
+
             foreach (Post post in posts)
             {
                 PostControl control = new();
@@ -88,7 +104,20 @@ namespace BlogTok.Presentation.PostForms
 
         private void AllPostsForm_Load(object sender, EventArgs e)
         {
+            if (_choice == 1)
+            {
+                radioButton8.Checked = true;
+            }
+            else if (_choice == 2)
+            {
+                radioButton7.Checked = true;
+            }
+            else if (_choice == 3)
+            {
+                radioButton6.Checked = true;
+            }
 
+            button1_Click(sender, e);
         }
     }
 }

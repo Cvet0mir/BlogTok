@@ -38,7 +38,6 @@ namespace BlogTok.Controllers
                 Picture = picture,
                 CreatedAt = DateTime.Now
             };
-
             await _postService.AddAsync(post);
 
             return "Post created successfully";
@@ -48,14 +47,10 @@ namespace BlogTok.Controllers
         {
             var post = await _postService.GetByIdAsync(postId);
 
-            if (post == null)
-                return "Post not found";
-
-            if (post.UserId != userId)
-                return "You can only delete your own posts";
+            if (post == null) return "Post not found";
+            if (post.UserId != userId) return "You can only delete your own posts";
 
             await _postService.DeleteAsync(post);
-
             return "Post deleted";
         }
 
@@ -74,7 +69,7 @@ namespace BlogTok.Controllers
             return await _postService.GetMostLikedPostsAsync();
         }
 
-        public Task<Post?> GetPostAsync(int postId)
+        public Task<Post> GetPostAsync(int postId)
         {
             return _postService.GetByIdAsync(postId);
         }

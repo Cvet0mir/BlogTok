@@ -18,6 +18,7 @@ namespace BlogTok.Presentation
     public partial class PostDetailsForm : Form
     {
         private readonly ReactionController _controller;
+        private readonly PostController _postController;
         private readonly Post _post;
 
         public PostDetailsForm(Post post)
@@ -25,6 +26,8 @@ namespace BlogTok.Presentation
             InitializeComponent();
 
             _controller = new();
+            _postController = new();
+
             _post = post;
             LoadPost();
         }
@@ -38,6 +41,13 @@ namespace BlogTok.Presentation
             label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
             label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
             label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+
+            if (_post.UserId == UserSession.CurrentUser.Id || UserSession.CurrentUser.Role == RoleType.Admin)
+            {
+                button6.Visible = true;
+            }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,6 +74,35 @@ namespace BlogTok.Presentation
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PostDetailsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            string res = await _postController.DeletePostAsync(_post.Id, UserSession.CurrentUser.Id);
+            if (res == "Post deleted")
+            {
+                MessageBox.Show(res, "Post Deletion Success");
+
+                AllPostsForm allPostsForm = new();
+                allPostsForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(res, "Post Deletion Failed");
+            }
+
+
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

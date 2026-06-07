@@ -68,5 +68,10 @@ namespace BlogTok.Presentation
             logInScreen.ShowDialog();
             this.Close();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
