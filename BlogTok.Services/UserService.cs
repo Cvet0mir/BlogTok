@@ -27,12 +27,17 @@ namespace BlogTok.Services
 
         public async Task<User?> GetByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.Users
+                .Include(u => u.Followers)
+                .Include(u => u.Following)
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<User?> GetByEmailAsync(string email)
         {
             return await _context.Users
+                .Include(u => u.Followers)
+                .Include(u => u.Following)
                 .FirstOrDefaultAsync(u => u.Email == email);
         }
 
@@ -56,6 +61,8 @@ namespace BlogTok.Services
         public async Task<List<User>> SearchAsync(string text)
         {
             return await _context.Users
+                .Include(u => u.Followers)
+                .Include(u => u.Following)
                 .Where(u => u.FirstName.Contains(text) ||
                             u.Surname.Contains(text))
                 .ToListAsync();

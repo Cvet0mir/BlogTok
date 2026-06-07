@@ -110,7 +110,6 @@ namespace BlogTok.Controllers
             if (currentUserId == targetUserId) return "You cannot follow yourself";
 
             var following = await _service.GetFollowingAsync(currentUserId);
-
             if (following.Any(u => u.Id == targetUserId)) return "Already following this user";
 
             await _service.FollowAsync(currentUserId, targetUserId);

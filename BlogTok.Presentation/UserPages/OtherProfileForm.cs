@@ -1,4 +1,5 @@
 ﻿using BlogTok.Controllers;
+using BlogTok.Data.Enums;
 using BlogTok.Data.Models;
 using BlogTok.Presentation.PostForms;
 using BlogTok.Session;
@@ -44,8 +45,16 @@ namespace BlogTok.Presentation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ProfileForm profileForm = new();
-            profileForm.ShowDialog();
+            if (UserSession.CurrentUser.Role == RoleType.User)
+            {
+                ProfileForm profileForm = new();
+                profileForm.ShowDialog();
+            }
+            else
+            {
+                AdminHomePage adminHomePage = new();
+                adminHomePage.ShowDialog();
+            }
 
             this.Close();
         }
@@ -61,11 +70,47 @@ namespace BlogTok.Presentation
             {
                 pictureBox1.ImageLocation = _user.ProfilePic;
             }
+
+            var followings = await _controller.GetFollowingAsync(UserSession.CurrentUser.Id);
+            if (followings.Contains(_user))
+                button4.Text = "Unfollow";
+            else
+                button4.Text = "Follow";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
+            var followings = await _controller.GetFollowingAsync(UserSession.CurrentUser.Id);
+            if (followings.Contains(_user))
+            {
+                string res = await _controller.FollowAsync(UserSession.CurrentUser.Id, _user.Id);
 
+                if (res == "Followed successfully")
+                {
+                    MessageBox.Show(res, "Follow Success");
+                    button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+                    button4.Text = "Unfollow";
+                }
+                else
+                {
+                    MessageBox.Show(res, "Follow Fail");
+                }
+            }
+            else
+            {
+                string res = await _controller.UnfollowAsync(UserSession.CurrentUser.Id, _user.Id);
+
+                if (res == "Unfollowed successfully")
+                {
+                    MessageBox.Show(res, "Unfollow Success");
+                    button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+                    button4.Text = "Follow";
+                }
+                else
+                {
+                    MessageBox.Show(res, "Unfollow Fail");
+                }
+            }
         }
 
         private async void button7_Click(object sender, EventArgs e)
