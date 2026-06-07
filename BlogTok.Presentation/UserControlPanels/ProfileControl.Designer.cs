@@ -55,6 +55,7 @@
             label6.Size = new Size(58, 23);
             label6.TabIndex = 22;
             label6.Text = "efef";
+            label6.Click += label6_Click;
             // 
             // ProfileControl
             // 
@@ -65,6 +66,7 @@
             Controls.Add(pictureBox1);
             Name = "ProfileControl";
             Size = new Size(503, 139);
+            Load += ProfileControl_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
