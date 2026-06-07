@@ -19,13 +19,15 @@ namespace BlogTok.Presentation.PostForms
     {
         private PostController _controller;
         private int _choice;
+        private User _user;
 
-        public AllPostsForm(int choice = 0)
+        public AllPostsForm(int choice = 0, User user = null)
         {
             InitializeComponent();
 
             _controller = new();
             _choice = choice;
+            _user = user;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -115,6 +117,10 @@ namespace BlogTok.Presentation.PostForms
             else if (_choice == 3)
             {
                 radioButton6.Checked = true;
+            }
+            if (_user != null)
+            {
+                textBox3.Text = _user.FirstName + " " + _user.Surname;
             }
 
             button1_Click(sender, e);

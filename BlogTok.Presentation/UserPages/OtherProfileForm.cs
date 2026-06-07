@@ -1,5 +1,7 @@
 ﻿using BlogTok.Controllers;
 using BlogTok.Data.Models;
+using BlogTok.Presentation.PostForms;
+using BlogTok.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +36,10 @@ namespace BlogTok.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            AllPostsForm allPostsForm = new(user: _user);
+            allPostsForm.ShowDialog();
 
+            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -61,6 +66,25 @@ namespace BlogTok.Presentation
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            string res = await _controller.DeleteUserAsync(UserSession.CurrentUser, _user.Id);
+
+            if (res == "User deleted")
+            {
+                MessageBox.Show(res, "User Deletion Success");
+
+                AdminHomePage adminHomePage = new();
+                adminHomePage.ShowDialog();
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(res, "User Deletion Fail");
+            }
         }
     }
 }

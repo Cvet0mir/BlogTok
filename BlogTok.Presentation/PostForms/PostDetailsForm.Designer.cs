@@ -225,6 +225,7 @@
             label6.Size = new Size(62, 18);
             label6.TabIndex = 38;
             label6.Text = "Email:";
+            label6.Click += label6_Click;
             // 
             // PostDetailsForm
             // 

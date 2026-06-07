@@ -41,6 +41,11 @@ namespace BlogTok.Presentation
             label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
             label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
             label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            label6.Text = _post.User.FirstName + " " + _post.User.Surname;
+            if (!string.IsNullOrWhiteSpace(_post.User.ProfilePic))
+            {
+                pictureBox2.ImageLocation = _post.User.ProfilePic;
+            }
 
             if (_post.UserId == UserSession.CurrentUser.Id || UserSession.CurrentUser.Role == RoleType.Admin)
             {
@@ -104,7 +109,18 @@ namespace BlogTok.Presentation
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            OtherProfileForm otherProfileForm = new(_post.User);
+            otherProfileForm.ShowDialog();
 
+            this.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            OtherProfileForm otherProfileForm = new(_post.User);
+            otherProfileForm.ShowDialog();
+
+            this.Close();
         }
     }
 }

@@ -49,9 +49,10 @@
             // 
             button10.BackColor = Color.Linen;
             button10.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button10.Location = new Point(918, 117);
+            button10.Location = new Point(803, 88);
+            button10.Margin = new Padding(3, 2, 3, 2);
             button10.Name = "button10";
-            button10.Size = new Size(167, 64);
+            button10.Size = new Size(146, 48);
             button10.TabIndex = 44;
             button10.Text = "Search Posts";
             button10.UseVisualStyleBackColor = false;
@@ -60,9 +61,10 @@
             // 
             button9.BackColor = Color.Linen;
             button9.Font = new Font("SimSun", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.Location = new Point(470, 443);
+            button9.Location = new Point(411, 332);
+            button9.Margin = new Padding(3, 2, 3, 2);
             button9.Name = "button9";
-            button9.Size = new Size(184, 27);
+            button9.Size = new Size(161, 20);
             button9.TabIndex = 43;
             button9.Text = "Edit profile ✏";
             button9.UseVisualStyleBackColor = false;
@@ -72,20 +74,23 @@
             // 
             button7.BackColor = Color.Red;
             button7.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(918, 303);
+            button7.Location = new Point(803, 227);
+            button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
-            button7.Size = new Size(167, 64);
+            button7.Size = new Size(146, 48);
             button7.TabIndex = 42;
             button7.Text = "Delete";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button5
             // 
             button5.BackColor = Color.Linen;
             button5.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(742, 303);
+            button5.Location = new Point(649, 227);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(167, 64);
+            button5.Size = new Size(146, 48);
             button5.TabIndex = 41;
             button5.Text = "Commented Posts";
             button5.UseVisualStyleBackColor = false;
@@ -94,9 +99,10 @@
             // 
             button6.BackColor = Color.Linen;
             button6.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(918, 213);
+            button6.Location = new Point(803, 160);
+            button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(167, 64);
+            button6.Size = new Size(146, 48);
             button6.TabIndex = 40;
             button6.Text = "Search Users";
             button6.UseVisualStyleBackColor = false;
@@ -105,9 +111,10 @@
             // 
             button4.BackColor = Color.Linen;
             button4.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(742, 213);
+            button4.Location = new Point(649, 160);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(167, 64);
+            button4.Size = new Size(146, 48);
             button4.TabIndex = 39;
             button4.Text = "Liked Posts";
             button4.UseVisualStyleBackColor = false;
@@ -116,9 +123,10 @@
             // 
             button3.BackColor = Color.Linen;
             button3.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(742, 117);
+            button3.Location = new Point(649, 88);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(167, 64);
+            button3.Size = new Size(146, 48);
             button3.TabIndex = 38;
             button3.Text = "'s Posts";
             button3.UseVisualStyleBackColor = false;
@@ -127,9 +135,10 @@
             // 
             button2.BackColor = Color.Linen;
             button2.Font = new Font("SimSun", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(470, 273);
+            button2.Location = new Point(411, 205);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(107, 107);
+            button2.Size = new Size(94, 80);
             button2.TabIndex = 37;
             button2.Text = "120";
             button2.UseVisualStyleBackColor = false;
@@ -138,9 +147,10 @@
             // 
             button1.BackColor = Color.Linen;
             button1.Font = new Font("SimSun", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(470, 75);
+            button1.Location = new Point(411, 56);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(107, 107);
+            button1.Size = new Size(94, 80);
             button1.TabIndex = 36;
             button1.Text = "120";
             button1.UseVisualStyleBackColor = false;
@@ -149,9 +159,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("SimSun", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(470, 233);
+            label1.Location = new Point(411, 175);
             label1.Name = "label1";
-            label1.Size = new Size(118, 23);
+            label1.Size = new Size(89, 18);
             label1.TabIndex = 35;
             label1.Text = "Following";
             // 
@@ -159,9 +169,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("SimSun", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(475, 36);
+            label6.Location = new Point(416, 27);
             label6.Name = "label6";
-            label6.Size = new Size(118, 23);
+            label6.Size = new Size(89, 18);
             label6.TabIndex = 34;
             label6.Text = "Followers";
             // 
@@ -169,27 +179,28 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("SimSun", 19.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(1, 440);
+            label2.Location = new Point(1, 330);
             label2.Name = "label2";
-            label2.Size = new Size(0, 33);
+            label2.Size = new Size(0, 26);
             label2.TabIndex = 33;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(438, 399);
+            pictureBox1.Size = new Size(383, 299);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 32;
             pictureBox1.TabStop = false;
             // 
             // AdminUserForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(1154, 520);
+            ClientSize = new Size(1010, 390);
             Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button7);
@@ -203,7 +214,6 @@
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "AdminUserForm";
             Text = "AdminUserSearch";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

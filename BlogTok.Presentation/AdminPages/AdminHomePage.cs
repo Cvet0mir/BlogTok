@@ -1,4 +1,5 @@
-﻿using BlogTok.Session;
+﻿using BlogTok.Presentation.PostForms;
+using BlogTok.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,10 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            AllPostsForm allPostsForm = new();
+            allPostsForm.ShowDialog();
 
+            this.Close();
         }
     }
 }

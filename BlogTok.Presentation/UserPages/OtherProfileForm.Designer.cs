@@ -168,8 +168,9 @@
             button7.Name = "button7";
             button7.Size = new Size(113, 32);
             button7.TabIndex = 43;
-            button7.Text = "Delete Profile";
+            button7.Text = "Delete";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // OtherProfileForm
             // 
