@@ -51,12 +51,6 @@ namespace BlogTok.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Comment>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Comments)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Comment>()
                 .HasOne(c => c.Post)
                 .WithMany(p => p.Comments)
                 .HasForeignKey(c => c.PostId)
@@ -66,7 +60,7 @@ namespace BlogTok.Data
                 .HasOne(r => r.User)
                 .WithMany(u => u.Reactions)
                 .HasForeignKey(r => r.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Reaction>()
                 .HasOne(r => r.Post)
@@ -78,7 +72,7 @@ namespace BlogTok.Data
                 .HasOne(cr => cr.User)
                 .WithMany(u => u.CommentReactions)
                 .HasForeignKey(cr => cr.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<CommentReaction>()
                 .HasOne(cr => cr.Comment)
@@ -90,7 +84,7 @@ namespace BlogTok.Data
                 .HasOne(uf => uf.Follower)
                 .WithMany(u => u.Following)
                 .HasForeignKey(uf => uf.FollowerId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<UserFollow>()
                 .HasOne(uf => uf.Following)

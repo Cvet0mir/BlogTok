@@ -91,7 +91,6 @@ namespace BlogTok.Controllers
             if (currentUser.Role != RoleType.Admin) return "Only admin can delete users";
 
             var user = await _service.GetByIdAsync(targetUserId);
-
             if (user == null) return "User not found";
 
             await _service.DeleteAsync(user);

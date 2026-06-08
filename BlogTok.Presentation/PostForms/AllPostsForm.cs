@@ -113,6 +113,11 @@ namespace BlogTok.Presentation.PostForms
         {
             flowLayoutPanel1.Controls.Clear();
 
+            if (UserSession.CurrentUser.Role == RoleType.Admin)
+            {
+                groupBox2.Visible = false;
+            }
+
             if (_choice == 1)
             {
                 radioButton8.Checked = true;

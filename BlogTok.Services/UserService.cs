@@ -28,9 +28,11 @@ namespace BlogTok.Services
         public async Task<User?> GetByIdAsync(int id)
         {
             return await _context.Users
-                .Include(u => u.Followers)
-                .Include(u => u.Following)
-                .FirstOrDefaultAsync(u => u.Id == id);
+                .Include(u => u.Posts)
+                .Include(u => u.Comments)
+                .Include(u => u.Reactions)
+                .Include(u => u.CommentReactions)
+                .FirstAsync(u => u.Id == id);
         }
 
         public async Task<User?> GetByEmailAsync(string email)
@@ -54,6 +56,12 @@ namespace BlogTok.Services
 
         public async Task DeleteAsync(User user)
         {
+            var follows = await _context.UserFollows
+                .Where(f => f.FollowerId == user.Id ||
+                            f.FollowingId == user.Id)
+                .ToListAsync();
+
+            _context.UserFollows.RemoveRange(follows);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }

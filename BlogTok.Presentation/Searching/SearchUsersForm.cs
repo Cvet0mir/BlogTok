@@ -72,7 +72,6 @@ namespace BlogTok.Presentation
 
             foreach (User user in users)
             {
-                this.Hide();
                 ProfileControl profileControl = new(user);
                 flowLayoutPanel1.Controls.Add(profileControl);
             }
@@ -82,7 +81,17 @@ namespace BlogTok.Presentation
         {
             flowLayoutPanel1.Controls.Clear();
 
+            if (UserSession.CurrentUser.Role == RoleType.Admin)
+            {
+                groupBox1.Visible = false;
+            }
+
             radioButton1.Checked = true;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

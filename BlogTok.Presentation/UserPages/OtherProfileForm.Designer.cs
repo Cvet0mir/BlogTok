@@ -162,6 +162,7 @@
             button7.TabIndex = 43;
             button7.Text = "Delete";
             button7.UseVisualStyleBackColor = false;
+            button7.Visible = false;
             button7.Click += button7_Click;
             // 
             // OtherProfileForm

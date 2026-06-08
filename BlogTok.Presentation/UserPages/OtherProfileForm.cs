@@ -69,6 +69,7 @@ namespace BlogTok.Presentation
             if (UserSession.CurrentUser.Role == RoleType.Admin)
             {
                 button4.Visible = false;
+                button7.Visible = true;
             }
 
             label2.Text = _user.FirstName + " " + _user.Surname;

@@ -48,7 +48,7 @@ namespace BlogTok.Controllers
             var post = await _postService.GetByIdAsync(postId);
 
             if (post == null) return "Post not found";
-            if (post.UserId != userId) return "You can only delete your own posts";
+            if (post.UserId != userId && (await _userService.GetByIdAsync(userId)).Role != RoleType.Admin) return "You can only delete your own posts";
 
             await _postService.DeleteAsync(post);
             return "Post deleted";

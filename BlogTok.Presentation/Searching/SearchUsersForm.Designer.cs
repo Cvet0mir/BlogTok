@@ -65,6 +65,7 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filter";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // radioButton3
             // 
@@ -137,12 +138,12 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Location = new Point(502, 3);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(622, 515);
             flowLayoutPanel1.TabIndex = 15;
-            flowLayoutPanel1.AutoScroll = true;
             // 
             // button2
             // 
