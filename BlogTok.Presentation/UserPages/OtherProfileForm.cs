@@ -30,6 +30,7 @@ namespace BlogTok.Presentation
 
         private void button6_Click(object sender, EventArgs e)
         {
+            this.Hide();
             SearchUsersForm searchUsersForm = new();
             searchUsersForm.ShowDialog();
 
@@ -38,6 +39,7 @@ namespace BlogTok.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new(user: _user);
             allPostsForm.ShowDialog();
 
@@ -48,11 +50,13 @@ namespace BlogTok.Presentation
         {
             if (UserSession.CurrentUser.Role == RoleType.User)
             {
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
             }
             else
             {
+                this.Hide();
                 AdminHomePage adminHomePage = new();
                 adminHomePage.ShowDialog();
             }
@@ -62,6 +66,11 @@ namespace BlogTok.Presentation
 
         private async void OtherProfileForm_Load(object sender, EventArgs e)
         {
+            if (UserSession.CurrentUser.Role == RoleType.Admin)
+            {
+                button4.Visible = false;
+            }
+
             label2.Text = _user.FirstName + " " + _user.Surname;
             button1.Text = (await _controller
                 .GetFollowersAsync(_user.Id))
@@ -73,13 +82,13 @@ namespace BlogTok.Presentation
                 .ToString();
             button3.Text = _user.FirstName + "'s posts";
 
-            if (string.IsNullOrWhiteSpace(_user.ProfilePic))
+            if (!string.IsNullOrWhiteSpace(_user.ProfilePic))
             {
                 pictureBox1.ImageLocation = _user.ProfilePic;
             }
 
-            var followings = await _controller.GetFollowersAsync(_user.Id);
-            if (followings.Contains(UserSession.CurrentUser))
+            List<User> followers = await _controller.GetFollowersAsync(_user.Id);
+            if (followers.Select(f => f.Id).Contains(UserSession.CurrentUser.Id))
                 button4.Text = "Unfollow";
             else
                 button4.Text = "Follow";
@@ -88,14 +97,15 @@ namespace BlogTok.Presentation
         private async void button4_Click(object sender, EventArgs e)
         {
             var followings = await _controller.GetFollowingAsync(UserSession.CurrentUser.Id);
-            if (!followings.Contains(_user))
-            { 
+            if (!followings.Select(f => f.Id).Contains(_user.Id))
+            {
                 string res = await _controller.FollowAsync(UserSession.CurrentUser.Id, _user.Id);
 
                 if (res == "Followed successfully")
                 {
+                    _user = await _controller.GetProfileAsync(_user.Id);
                     MessageBox.Show(res, "Follow Success");
-                    button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+                    button1.Text = (await _controller.GetFollowersAsync(_user.Id)).Count.ToString();
                     button4.Text = "Unfollow";
                 }
                 else
@@ -109,8 +119,9 @@ namespace BlogTok.Presentation
 
                 if (res == "Unfollowed successfully")
                 {
+                    _user = await _controller.GetProfileAsync(_user.Id);
                     MessageBox.Show(res, "Unfollow Success");
-                    button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+                    button1.Text = (await _controller.GetFollowersAsync(_user.Id)).Count.ToString();
                     button4.Text = "Follow";
                 }
                 else
@@ -128,6 +139,7 @@ namespace BlogTok.Presentation
             {
                 MessageBox.Show(res, "User Deletion Success");
 
+                this.Hide();
                 AdminHomePage adminHomePage = new();
                 adminHomePage.ShowDialog();
 

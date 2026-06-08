@@ -30,11 +30,13 @@ namespace BlogTok.Presentation
         {
             if (UserSession.CurrentUser.Role == RoleType.User)
             {
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
             }
             else
             {
+                this.Hide();
                 AdminHomePage adminPanelForm = new();
                 adminPanelForm.ShowDialog();
             }
@@ -70,6 +72,7 @@ namespace BlogTok.Presentation
 
             foreach (User user in users)
             {
+                this.Hide();
                 ProfileControl profileControl = new(user);
                 flowLayoutPanel1.Controls.Add(profileControl);
             }

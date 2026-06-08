@@ -147,6 +147,7 @@
             Controls.Add(label1);
             Name = "LogInScreen";
             Text = "LogInScreen";
+            Load += LogInScreen_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -24,6 +24,7 @@ namespace BlogTok.Presentation
         {
             UserSession.CurrentUser = null;
 
+            this.Hide();
             LogInScreen logInPage = new();
             logInPage.ShowDialog();
 
@@ -32,6 +33,7 @@ namespace BlogTok.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             UserJsonAddForm userJsonAddForm = new();
             userJsonAddForm.ShowDialog();
 
@@ -40,6 +42,7 @@ namespace BlogTok.Presentation
 
         private void button10_Click(object sender, EventArgs e)
         {
+            this.Hide();
             SearchUsersForm searchUsersForm = new();
             searchUsersForm.ShowDialog();
 
@@ -48,10 +51,16 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new();
             allPostsForm.ShowDialog();
 
             this.Close();
+        }
+
+        private void AdminHomePage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,6 +36,7 @@ namespace BlogTok.Presentation
             {
                 MessageBox.Show("User registered successfully! Now, sign into to your new account", "Registration Successfull");
 
+                this.Hide();
                 LogInScreen logInScreen = new();
                 logInScreen.ShowDialog();
                 this.Hide();
@@ -64,6 +65,7 @@ namespace BlogTok.Presentation
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             LogInScreen logInScreen = new();
             logInScreen.ShowDialog();
             this.Close();

@@ -49,6 +49,8 @@ namespace BlogTok.Presentation
             if (result == "Post created successfully")
             {
                 MessageBox.Show("Post created successfully!", "Success");
+
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
 
@@ -62,6 +64,7 @@ namespace BlogTok.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ProfileForm profileForm = new();
             profileForm.ShowDialog();
 
@@ -82,6 +85,11 @@ namespace BlogTok.Presentation
 
                 pictureBox1.Image = Image.FromFile(imagePath);
             }
+        }
+
+        private void AddPost_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

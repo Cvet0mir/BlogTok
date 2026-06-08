@@ -46,18 +46,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("SimSun", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(399, 20);
+            label2.Location = new Point(456, 27);
             label2.Name = "label2";
-            label2.Size = new Size(202, 33);
+            label2.Size = new Size(248, 40);
             label2.TabIndex = 2;
             label2.Text = "Make a post";
             // 
             // richTextBox1
             // 
             richTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            richTextBox1.Location = new Point(27, 185);
+            richTextBox1.Location = new Point(31, 247);
+            richTextBox1.Margin = new Padding(3, 4, 3, 4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(396, 193);
+            richTextBox1.Size = new Size(452, 256);
             richTextBox1.TabIndex = 5;
             richTextBox1.Text = "";
             // 
@@ -65,18 +66,19 @@
             // 
             textBox1.BackColor = SystemColors.Window;
             textBox1.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(27, 108);
+            textBox1.Location = new Point(31, 144);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(396, 31);
+            textBox1.Size = new Size(452, 37);
             textBox1.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("SimSun", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(189, 81);
+            label1.Location = new Point(216, 108);
             label1.Name = "label1";
-            label1.Size = new Size(70, 24);
+            label1.Size = new Size(88, 30);
             label1.TabIndex = 7;
             label1.Text = "Title";
             // 
@@ -84,9 +86,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("SimSun", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(153, 158);
+            label3.Location = new Point(175, 211);
             label3.Name = "label3";
-            label3.Size = new Size(142, 24);
+            label3.Size = new Size(178, 30);
             label3.TabIndex = 8;
             label3.Text = "Description";
             // 
@@ -94,19 +96,18 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("SimSun", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(758, 83);
+            label4.Location = new Point(866, 111);
             label4.Name = "label4";
-            label4.Size = new Size(94, 24);
+            label4.Size = new Size(118, 30);
             label4.TabIndex = 9;
             label4.Text = "Picture";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(672, 108);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(768, 144);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(270, 216);
+            pictureBox1.Size = new Size(309, 288);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
@@ -116,10 +117,9 @@
             // 
             button3.BackColor = Color.Linen;
             button3.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(478, 211);
-            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Location = new Point(546, 281);
             button3.Name = "button3";
-            button3.Size = new Size(146, 48);
+            button3.Size = new Size(167, 64);
             button3.TabIndex = 19;
             button3.Text = "Post";
             button3.UseVisualStyleBackColor = false;
@@ -129,10 +129,9 @@
             // 
             button1.BackColor = Color.Coral;
             button1.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(10, 2);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(11, 3);
             button1.Name = "button1";
-            button1.Size = new Size(113, 32);
+            button1.Size = new Size(129, 43);
             button1.TabIndex = 20;
             button1.Text = "Home Page";
             button1.UseVisualStyleBackColor = false;
@@ -142,10 +141,9 @@
             // 
             button2.BackColor = Color.Linen;
             button2.Font = new Font("SimSun", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(672, 328);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(768, 437);
             button2.Name = "button2";
-            button2.Size = new Size(270, 28);
+            button2.Size = new Size(309, 37);
             button2.TabIndex = 31;
             button2.Text = "Choose Picture...";
             button2.UseVisualStyleBackColor = false;
@@ -153,10 +151,10 @@
             // 
             // AddPost
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(1010, 390);
+            ClientSize = new Size(1154, 520);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(button3);
@@ -167,8 +165,10 @@
             Controls.Add(textBox1);
             Controls.Add(richTextBox1);
             Controls.Add(label2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AddPost";
             Text = "AddPost";
+            Load += AddPost_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

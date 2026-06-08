@@ -72,6 +72,7 @@ namespace BlogTok.Services
         {
             return await _context.UserFollows
                 .Where(f => f.FollowingId == userId)
+                .Include(f => f.Follower)
                 .Select(f => f.Follower)
                 .ToListAsync();
         }
@@ -80,6 +81,7 @@ namespace BlogTok.Services
         {
             return await _context.UserFollows
                 .Where(f => f.FollowerId == userId)
+                .Include(f => f.Following)
                 .Select(f => f.Following)
                 .ToListAsync();
         }

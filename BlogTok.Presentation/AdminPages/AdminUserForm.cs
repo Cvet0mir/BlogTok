@@ -26,5 +26,10 @@ namespace BlogTok.Presentation
         {
 
         }
+
+        private void AdminUserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

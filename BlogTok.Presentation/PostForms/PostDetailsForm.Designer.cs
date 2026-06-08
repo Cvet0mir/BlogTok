@@ -45,6 +45,7 @@
             button6 = new Button();
             pictureBox2 = new PictureBox();
             label6 = new Label();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -193,7 +194,7 @@
             // 
             button6.BackColor = Color.Red;
             button6.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(1122, 520);
+            button6.Location = new Point(963, 520);
             button6.Name = "button6";
             button6.Size = new Size(152, 33);
             button6.TabIndex = 36;
@@ -224,12 +225,25 @@
             label6.Text = "Email:";
             label6.Click += label6_Click;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.Coral;
+            button7.Font = new Font("SimSun", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.Location = new Point(1112, 520);
+            button7.Name = "button7";
+            button7.Size = new Size(172, 33);
+            button7.TabIndex = 39;
+            button7.Text = "Make Comment";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
             // PostDetailsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
             ClientSize = new Size(1379, 552);
+            Controls.Add(button7);
             Controls.Add(label6);
             Controls.Add(pictureBox2);
             Controls.Add(button6);
@@ -273,5 +287,6 @@
         private Button button6;
         private PictureBox pictureBox2;
         private Label label6;
+        private Button button7;
     }
 }

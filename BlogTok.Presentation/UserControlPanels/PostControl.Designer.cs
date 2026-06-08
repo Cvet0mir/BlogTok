@@ -82,6 +82,7 @@ namespace BlogTok.Presentation.UserControlPanels
             Margin = new Padding(3, 4, 3, 4);
             Name = "PostControl";
             Size = new Size(520, 229);
+            Load += PostControl_Load;
             ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -22,6 +22,7 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AdminHomePage adminHome = new();
             adminHome.ShowDialog();
 
@@ -51,6 +52,11 @@ namespace BlogTok.Presentation
             {
                 MessageBox.Show(res, "Error");
             }
+        }
+
+        private void UserJsonAddForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

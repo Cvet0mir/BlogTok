@@ -1,4 +1,5 @@
 ﻿using BlogTok.Controllers;
+using BlogTok.Data.Enums;
 using BlogTok.Session;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Form1 reigstrationPage = new();
             reigstrationPage.ShowDialog();
             this.Close();
@@ -40,14 +42,29 @@ namespace BlogTok.Presentation
                 UserSession.CurrentUser = res.User;
                 MessageBox.Show(res.Message, "Log in Success");
 
-                ProfileForm profileForm = new();
-                profileForm.ShowDialog();
+                if (UserSession.CurrentUser.Role == RoleType.User)
+                {
+                    this.Hide();
+                    ProfileForm profileForm = new();
+                    profileForm.ShowDialog();
+                }
+                else
+                {
+                    this.Hide();
+                    AdminHomePage adminHomePage = new();
+                    adminHomePage.ShowDialog();
+                }
                 this.Close();
             }
             else
             {
                 MessageBox.Show(res.Message, "Log in Fail");
             }
+        }
+
+        private void LogInScreen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

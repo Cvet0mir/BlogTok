@@ -78,6 +78,7 @@
             Controls.Add(button2);
             Name = "UserJsonAddForm";
             Text = "UserJsonAddForm";
+            Load += UserJsonAddForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

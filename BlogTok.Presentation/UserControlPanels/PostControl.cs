@@ -16,8 +16,8 @@ namespace BlogTok.Presentation.UserControlPanels
 
         public PostControl()
         {
-            InitializeComponent(); 
-            
+            InitializeComponent();
+
             this.Click += OnControlClicked;
             pictureBox1.Click += OnControlClicked;
             label3.Click += OnControlClicked;
@@ -27,6 +27,11 @@ namespace BlogTok.Presentation.UserControlPanels
         public void OnControlClicked(object sender, EventArgs e)
         {
             PostClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void PostControl_Load(object sender, EventArgs e)
+        {
+
         }
 
         public string ImgPath

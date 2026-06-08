@@ -68,6 +68,7 @@ namespace BlogTok.Presentation
                 UserSession.CurrentUser = await _userController.GetProfileAsync(UserSession.CurrentUser.Id);
                 MessageBox.Show(res, "Profile Update Success");
 
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
 
@@ -81,6 +82,7 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ProfileForm profileForm = new();
             profileForm.ShowDialog();
 

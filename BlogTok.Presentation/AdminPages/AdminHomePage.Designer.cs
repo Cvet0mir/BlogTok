@@ -106,6 +106,7 @@
             Controls.Add(label2);
             Name = "AdminHomePage";
             Text = "AdminHomePage";
+            Load += AdminHomePage_Load;
             ResumeLayout(false);
             PerformLayout();
         }

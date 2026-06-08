@@ -34,11 +34,13 @@ namespace BlogTok.Presentation.PostForms
         {
             if (UserSession.CurrentUser.Role == RoleType.User)
             {
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
             }
             else
             {
+                this.Hide();
                 AdminHomePage adminHomePage = new();
                 adminHomePage.ShowDialog();
             }
@@ -102,6 +104,7 @@ namespace BlogTok.Presentation.PostForms
             PostControl control = (PostControl)sender;
             Post post = (Post)control.Tag;
 
+            this.Hide();
             PostDetailsForm detailsForm = new(post);
             detailsForm.ShowDialog();
         }

@@ -62,6 +62,7 @@ namespace BlogTok.Presentation
             var comments = await _commentController.GetCommentsForPostAsync(_post.Id);
             foreach (var comment in comments)
             {
+                this.Hide();
                 CommentControl commentControl = new(comment);
                 flowLayoutPanel1.Controls.Add(commentControl);
             }
@@ -69,6 +70,7 @@ namespace BlogTok.Presentation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new();
             allPostsForm.ShowDialog();
 
@@ -84,6 +86,8 @@ namespace BlogTok.Presentation
             //label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
             //label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
             _post = await _postController.GetPostAsync(_post.Id);
+
+            this.Hide();
             PostDetailsForm postDetailsForm = new(_post);
             postDetailsForm.ShowDialog();
 
@@ -99,6 +103,8 @@ namespace BlogTok.Presentation
             //label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
             //label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
             _post = await _postController.GetPostAsync(_post.Id);
+
+            this.Hide();
             PostDetailsForm postDetailsForm = new(_post);
             postDetailsForm.ShowDialog();
 
@@ -112,7 +118,10 @@ namespace BlogTok.Presentation
 
         private void PostDetailsForm_Load(object sender, EventArgs e)
         {
-
+            if (UserSession.CurrentUser.Role == RoleType.Admin)
+            {
+                button7.Visible = false;
+            }
         }
 
         private async void button6_Click(object sender, EventArgs e)
@@ -122,6 +131,7 @@ namespace BlogTok.Presentation
             {
                 MessageBox.Show(res, "Post Deletion Success");
 
+                this.Hide();
                 AllPostsForm allPostsForm = new();
                 allPostsForm.ShowDialog();
             }
@@ -136,6 +146,7 @@ namespace BlogTok.Presentation
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             OtherProfileForm otherProfileForm = new(_post.User);
             otherProfileForm.ShowDialog();
 
@@ -146,11 +157,13 @@ namespace BlogTok.Presentation
         {
             if (UserSession.CurrentUser.Id == _post.User.Id)
             {
+                this.Hide();
                 ProfileForm profileForm = new();
                 profileForm.ShowDialog();
             }
             else
             {
+                this.Hide();
                 OtherProfileForm otherProfileForm = new(_post.User);
                 otherProfileForm.ShowDialog();
             }
@@ -163,6 +176,8 @@ namespace BlogTok.Presentation
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Funny), "Reaction to post");
 
             _post = await _postController.GetPostAsync(_post.Id);
+
+            this.Hide();
             PostDetailsForm postDetailsForm = new(_post);
             postDetailsForm.ShowDialog();
 
@@ -174,8 +189,19 @@ namespace BlogTok.Presentation
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Sad), "Reaction to post");
 
             _post = await _postController.GetPostAsync(_post.Id);
+
+            this.Hide();
             PostDetailsForm postDetailsForm = new(_post);
             postDetailsForm.ShowDialog();
+
+            this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddComment addComment = new(_post);
+            addComment.ShowDialog();
 
             this.Close();
         }

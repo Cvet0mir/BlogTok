@@ -28,6 +28,7 @@ namespace BlogTok.Presentation
 
         private void button8_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AddPost addPostForm = new();
             addPostForm.ShowDialog();
 
@@ -36,6 +37,7 @@ namespace BlogTok.Presentation
 
         private void button5_Click(object sender, EventArgs e)
         {
+            this.Hide();
             SearchUsersForm searchUsersForm = new();
             searchUsersForm.ShowDialog();
 
@@ -46,6 +48,7 @@ namespace BlogTok.Presentation
         {
             UserSession.CurrentUser = null;
 
+            this.Hide();
             LogInScreen loginForm = new();
             loginForm.ShowDialog();
 
@@ -54,6 +57,7 @@ namespace BlogTok.Presentation
 
         private void button9_Click(object sender, EventArgs e)
         {
+            this.Hide();
             EditUserForm editUserPage = new();
             editUserPage.ShowDialog();
 
@@ -80,6 +84,7 @@ namespace BlogTok.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new();
             allPostsForm.ShowDialog();
 
@@ -88,6 +93,7 @@ namespace BlogTok.Presentation
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new(1);
             allPostsForm.ShowDialog();
 
@@ -96,6 +102,7 @@ namespace BlogTok.Presentation
 
         private void button6_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new(2);
             allPostsForm.ShowDialog();
 
@@ -104,6 +111,7 @@ namespace BlogTok.Presentation
 
         private void button10_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AllPostsForm allPostsForm = new(3);
             allPostsForm.ShowDialog();
 
