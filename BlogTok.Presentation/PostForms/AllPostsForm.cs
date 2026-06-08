@@ -48,6 +48,8 @@ namespace BlogTok.Presentation.PostForms
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+
             List<Post> posts = new();
 
             if (radioButton1.Checked)
@@ -106,6 +108,8 @@ namespace BlogTok.Presentation.PostForms
 
         private void AllPostsForm_Load(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+
             if (_choice == 1)
             {
                 radioButton8.Checked = true;

@@ -25,17 +25,21 @@ namespace BlogTok.Controllers
             if (existing != null)
             {
                 await _service.RemovePostReactionAsync(existing);
-                return "Reaction removed from post";
             }
 
-            await _service.AddPostReactionAsync(new Reaction
+            if (existing?.Emotion != type)
             {
-                UserId = userId,
-                PostId = postId,
-                Emotion = type
-            });
+                await _service.AddPostReactionAsync(new Reaction
+                {
+                    UserId = userId,
+                    PostId = postId,
+                    Emotion = type
+                });
 
-            return "Reaction added to post";
+                return "Reaction added to post";
+            }
+
+            return "Reaction removed from post";
         }
 
         public async Task<string> UnreactPostAsync(int userId, int postId)

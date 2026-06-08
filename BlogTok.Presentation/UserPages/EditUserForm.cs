@@ -42,7 +42,6 @@ namespace BlogTok.Presentation
 
         private void EditUserForm_Load(object sender, EventArgs e)
         {
-            textBox4.Text = UserSession.CurrentUser.Email;
             textBox2.Text = UserSession.CurrentUser.FirstName;
             textBox1.Text = UserSession.CurrentUser.Surname;
 
@@ -55,14 +54,18 @@ namespace BlogTok.Presentation
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            string email = textBox4.Text;
             string firstName = textBox2.Text;
             string surname = textBox1.Text;
             DateTime birthDate = dateTimePicker1.Value;
+            if (!string.IsNullOrWhiteSpace(UserSession.CurrentUser.ProfilePic))
+            {
+                pictureBox1.ImageLocation = UserSession.CurrentUser.ProfilePic;
+            }
 
             string res = await _userController.UpdateProfileAsync(UserSession.CurrentUser.Id, firstName, surname, _profilePic, birthDate);
             if (res == "Profile updated")
             {
+                UserSession.CurrentUser = await _userController.GetProfileAsync(UserSession.CurrentUser.Id);
                 MessageBox.Show(res, "Profile Update Success");
 
                 ProfileForm profileForm = new();

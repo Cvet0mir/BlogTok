@@ -44,6 +44,8 @@ namespace BlogTok.Presentation
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+
             List<User> users = await _controller.SearchUsersAsync(textBox3.Text);
 
             //if (radioButton1.Checked)
@@ -75,6 +77,8 @@ namespace BlogTok.Presentation
 
         private void SearchUsersForm_Load(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+
             radioButton1.Checked = true;
         }
     }

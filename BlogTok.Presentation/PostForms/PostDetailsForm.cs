@@ -21,7 +21,7 @@ namespace BlogTok.Presentation
         private readonly ReactionController _controller;
         private readonly PostController _postController;
         private readonly CommentController _commentController;
-        private readonly Post _post;
+        private Post _post;
 
         public PostDetailsForm(Post post)
         {
@@ -79,20 +79,30 @@ namespace BlogTok.Presentation
         {
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Dislike), "Reaction to post");
 
-            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
-            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
-            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
-            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            //label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            //label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            //label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            //label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            _post = await _postController.GetPostAsync(_post.Id);
+            PostDetailsForm postDetailsForm = new(_post);
+            postDetailsForm.ShowDialog();
+
+            this.Close();
         }
 
         private async void button5_Click(object sender, EventArgs e)
         {
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Like), "Reaction to post");
 
-            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
-            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
-            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
-            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            //label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
+            //label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
+            //label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
+            //label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            _post = await _postController.GetPostAsync(_post.Id);
+            PostDetailsForm postDetailsForm = new(_post);
+            postDetailsForm.ShowDialog();
+
+            this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -107,7 +117,7 @@ namespace BlogTok.Presentation
 
         private async void button6_Click(object sender, EventArgs e)
         {
-            string res = await _postController.DeletePostAsync(_post.Id, UserSession.CurrentUser.Id);
+            string res = await _postController.DeletePostAsync(UserSession.CurrentUser.Id, _post.Id);
             if (res == "Post deleted")
             {
                 MessageBox.Show(res, "Post Deletion Success");
@@ -134,8 +144,16 @@ namespace BlogTok.Presentation
 
         private void label6_Click(object sender, EventArgs e)
         {
-            OtherProfileForm otherProfileForm = new(_post.User);
-            otherProfileForm.ShowDialog();
+            if (UserSession.CurrentUser.Id == _post.User.Id)
+            {
+                ProfileForm profileForm = new();
+                profileForm.ShowDialog();
+            }
+            else
+            {
+                OtherProfileForm otherProfileForm = new(_post.User);
+                otherProfileForm.ShowDialog();
+            }
 
             this.Close();
         }
@@ -144,20 +162,22 @@ namespace BlogTok.Presentation
         {
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Funny), "Reaction to post");
 
-            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
-            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
-            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
-            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            _post = await _postController.GetPostAsync(_post.Id);
+            PostDetailsForm postDetailsForm = new(_post);
+            postDetailsForm.ShowDialog();
+
+            this.Close();
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(await _controller.ReactToPostAsync(UserSession.CurrentUser.Id, _post.Id, ReactionType.Sad), "Reaction to post");
 
-            label5.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Like).ToString();
-            label1.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Dislike).ToString();
-            label3.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Funny).ToString();
-            label4.Text = _post.Reactions.Count(x => x.Emotion == ReactionType.Sad).ToString();
+            _post = await _postController.GetPostAsync(_post.Id);
+            PostDetailsForm postDetailsForm = new(_post);
+            postDetailsForm.ShowDialog();
+
+            this.Close();
         }
     }
 }

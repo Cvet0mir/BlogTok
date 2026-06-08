@@ -1,4 +1,5 @@
 ﻿using BlogTok.Data.Models;
+using BlogTok.Session;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace BlogTok.Presentation.UserControlPanels
 {
@@ -33,8 +35,16 @@ namespace BlogTok.Presentation.UserControlPanels
 
         private void label6_Click(object sender, EventArgs e)
         {
-            OtherProfileForm otherProfileForm = new(_user);
-            otherProfileForm.ShowDialog();
+            if (UserSession.CurrentUser.Id == _user.Id)
+            {
+                ProfileForm profileForm = new();
+                profileForm.ShowDialog();
+            }
+            else
+            {
+                OtherProfileForm otherProfileForm = new(_user);
+                otherProfileForm.ShowDialog();
+            }
         }
     }
 }

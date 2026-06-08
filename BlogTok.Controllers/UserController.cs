@@ -72,7 +72,6 @@ namespace BlogTok.Controllers
         public async Task<string> UpdateProfileAsync(int userId, string firstName, string surname, string? profilePic, DateTime birthDate)
         {
             var user = await _service.GetByIdAsync(userId);
-
             if (user == null) return "User not found";
 
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(surname))

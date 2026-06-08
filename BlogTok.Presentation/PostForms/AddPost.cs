@@ -43,10 +43,9 @@ namespace BlogTok.Presentation
         {
             string title = textBox1.Text;
             string content = richTextBox1.Text;
-            string imgPath = pictureBox1.ImageLocation;
+            string imgPath = _imgPath;
 
             string result = await _controller.CreatePostAsync(UserSession.CurrentUser.Id, title, content, imgPath);
-
             if (result == "Post created successfully")
             {
                 MessageBox.Show("Post created successfully!", "Success");

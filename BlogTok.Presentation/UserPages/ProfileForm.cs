@@ -62,18 +62,17 @@ namespace BlogTok.Presentation
 
         private async void ProfileForm_Load(object sender, EventArgs e)
         {
-
             button1.Text = (await _controller
                 .GetFollowersAsync(UserSession.CurrentUser.Id))
                 .Count
                 .ToString();
             button2.Text = (await _controller
-                .GetFollowersAsync(UserSession.CurrentUser.Id))
+                .GetFollowingAsync(UserSession.CurrentUser.Id))
                 .Count
                 .ToString();
             label2.Text = UserSession.CurrentUser.FirstName + " " + UserSession.CurrentUser.Surname;
 
-            if (string.IsNullOrWhiteSpace(UserSession.CurrentUser.ProfilePic))
+            if (!string.IsNullOrWhiteSpace(UserSession.CurrentUser.ProfilePic))
             {
                 pictureBox1.ImageLocation = UserSession.CurrentUser.ProfilePic;
             }

@@ -24,6 +24,7 @@ namespace BlogTok.Presentation
         {
             InitializeComponent();
 
+            _controller = new();
             _user = user;
         }
 
@@ -62,8 +63,14 @@ namespace BlogTok.Presentation
         private async void OtherProfileForm_Load(object sender, EventArgs e)
         {
             label2.Text = _user.FirstName + " " + _user.Surname;
-            button1.Text = (await _controller.GetFollowersAsync(_user.Id)).Count.ToString();
-            button2.Text = (await _controller.GetFollowingAsync(_user.Id)).Count.ToString();
+            button1.Text = (await _controller
+                .GetFollowersAsync(_user.Id))
+                .Count
+                .ToString();
+            button2.Text = (await _controller
+                .GetFollowingAsync(_user.Id))
+                .Count
+                .ToString();
             button3.Text = _user.FirstName + "'s posts";
 
             if (string.IsNullOrWhiteSpace(_user.ProfilePic))
@@ -71,8 +78,8 @@ namespace BlogTok.Presentation
                 pictureBox1.ImageLocation = _user.ProfilePic;
             }
 
-            var followings = await _controller.GetFollowingAsync(UserSession.CurrentUser.Id);
-            if (followings.Contains(_user))
+            var followings = await _controller.GetFollowersAsync(_user.Id);
+            if (followings.Contains(UserSession.CurrentUser))
                 button4.Text = "Unfollow";
             else
                 button4.Text = "Follow";
@@ -81,8 +88,8 @@ namespace BlogTok.Presentation
         private async void button4_Click(object sender, EventArgs e)
         {
             var followings = await _controller.GetFollowingAsync(UserSession.CurrentUser.Id);
-            if (followings.Contains(_user))
-            {
+            if (!followings.Contains(_user))
+            { 
                 string res = await _controller.FollowAsync(UserSession.CurrentUser.Id, _user.Id);
 
                 if (res == "Followed successfully")
