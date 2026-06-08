@@ -84,9 +84,10 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(793, 13);
+            flowLayoutPanel1.BackColor = Color.LightGray;
+            flowLayoutPanel1.Location = new Point(793, 12);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(574, 480);
+            flowLayoutPanel1.Size = new Size(574, 481);
             flowLayoutPanel1.TabIndex = 22;
             // 
             // button2
