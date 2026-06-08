@@ -44,6 +44,7 @@ namespace BlogTok.Services
         {
             return await _context.Posts
                 .Include(x => x.User)
+                .Include(p => p.Comments)
                 .Include(p => p.Reactions)
                 .Where(p => p.UserId == userId)
                 .OrderByDescending(p => p.CreatedAt)
@@ -54,6 +55,7 @@ namespace BlogTok.Services
         {
             return await _context.Posts
                 .Include(x => x.User)
+                .Include(p => p.Comments)
                 .Include(p => p.Reactions)
                 .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync();
@@ -62,6 +64,7 @@ namespace BlogTok.Services
         {
             return await _context.Posts
                 .Include(x => x.User)
+                .Include(p => p.Comments)
                 .Include(p => p.Reactions)
                 .Select(p => new
                 {

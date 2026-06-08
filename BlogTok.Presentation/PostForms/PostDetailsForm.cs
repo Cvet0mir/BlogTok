@@ -62,7 +62,6 @@ namespace BlogTok.Presentation
             var comments = await _commentController.GetCommentsForPostAsync(_post.Id);
             foreach (var comment in comments)
             {
-                this.Hide();
                 CommentControl commentControl = new(comment);
                 flowLayoutPanel1.Controls.Add(commentControl);
             }
